@@ -1,25 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Datasources from './components/Datasources';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+import reducer from './components/reducer/reducer';
+import Users from './components/Users';
+import UserRoles from './components/UserRoles';
+
+const storage = createStore(reducer)
 
 function App() {
   return (
+    <Provider store={storage}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Datasources/>
+       <Users/>
+       {/* <UserRoles/> */}
     </div>
+    </Provider>
   );
 }
 
